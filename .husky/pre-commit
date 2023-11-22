@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+if [ ! -f "package-lock.json" ]; then
+    yarn generate-lock-entry >>yarn.lock
+    git add .
+fi
+
+npm run lint-staged
